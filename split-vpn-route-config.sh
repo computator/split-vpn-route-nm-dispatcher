@@ -24,7 +24,7 @@ echo "${0}: ipv4.add-hostname-routes: '${hostnames}'"
 # only run if hostnames were set
 [ ${hostnames:+1} ] || exit 0
 
-echo ${hostnames} | xargs -n 1 | dig +short -f - | sort -u | {
+echo ${hostnames} | xargs -n 1 | dig +short -f - | grep -v '\.$' | sort -u | {
 	while read ip_addr; do
 		# exit if interface is gone
 		[ "$(cat "/sys/class/net/${VPN_IP_IFACE}/carrier")" -eq 1 ] || exit 0
