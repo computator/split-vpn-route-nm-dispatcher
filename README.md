@@ -41,6 +41,16 @@ network:
           ipv4.add-hostname-routes: host1.example.com host2.example.com
           # ...
 ```
+since this is yaml you can also use the wrapped block syntax:
+```yaml
+# ...
+passthrough:
+  ipv4.add-hostname-routes: >
+    host1.example.com
+    host2.example.com
+    host3.example.com
+  # ...
+```
 
 # Limitations
 
